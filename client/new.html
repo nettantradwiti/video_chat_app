@@ -1,0 +1,50 @@
+<html>
+  <body>
+    <script
+      src="https://static.opentok.com/v2/js/opentok.js"
+      charset="utf-8"
+    ></script>
+    <script charset="utf-8">
+      var apiKey = "45828062";
+      var sessionId =
+        "2_MX40NTgyODA2Mn5-MTYyMjUyOTA0MjM3NH5SdUlkUHJGYVowNjduVkJDVmZpWVY3Vkd-UH4";
+      var token =
+        "T1==cGFydG5lcl9pZD00NTgyODA2MiZzaWc9MDY4ZTE1Njc4YTMxMDY3OWEzMDdiNTZiMjhhOGFmOTcxY2QwMjMyNTpzZXNzaW9uX2lkPTJfTVg0ME5UZ3lPREEyTW41LU1UWXlNalV5T1RBME1qTTNOSDVTZFVsa1VISkdZVm93TmpkdVZrSkRWbVpwV1ZZM1ZrZC1VSDQmY3JlYXRlX3RpbWU9MTYyMjUzMzQzOCZub25jZT0wLjIwMzM2OTkzODIxNTY5MTk0JnJvbGU9cHVibGlzaGVyJmV4cGlyZV90aW1lPTE2MjI2MTk4Mzg=";
+
+      // connect to session
+      var session = OT.initSession(apiKey, sessionId);
+
+      // create publisher
+      var publisher = OT.initPublisher();
+      session.connect(token, function (err) {
+        // publish publisher
+        session.publish(publisher);
+      });
+
+      // create subscriber
+      session.on("streamCreated", function (event) {
+        session.subscribe(event.stream);
+      });
+    </script>
+    <p>
+      Great work! You now have 2 clients publishing and subscribing.
+      <br /><strong
+        >Click back to the previous Hello World tab in your browser to
+        continue.</strong
+      >
+    </p>
+  </body>
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
+  <style>
+    body {
+      font-family: Muli, Arial;
+    }
+    strong {
+      color: #09c;
+    }
+    .OT_publisher {
+      float: left;
+      margin-right: 5px;
+    }
+  </style>
+</html>
